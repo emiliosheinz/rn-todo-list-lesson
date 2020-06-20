@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Alert} from 'react-native';
+import {View, Alert, ScrollView} from 'react-native';
 
 import {ToDoCard, Input, Button} from './components';
 
@@ -30,6 +30,16 @@ export default function App() {
     }
   }
 
+  function onPress(id) {
+    const newTodos = todos.map((item, index) => {
+      if (index === id) {
+        return {...item, isDone: true};
+      }
+      return {...item};
+    });
+    setTodos(newTodos);
+  }
+
   return (
     <View style={styles.container}>
       <Input
@@ -39,7 +49,7 @@ export default function App() {
       />
       <Button label="Adicionar" onPress={onAddTodo} />
       <View style={styles.separator} />
-      <View>
+      <ScrollView>
         {todos.map((item, index) => {
           return (
             <ToDoCard
@@ -47,10 +57,12 @@ export default function App() {
               title={item.title}
               onDelete={onDelete}
               key={index}
+              onPress={onPress}
+              id={index}
             />
           );
         })}
-      </View>
+      </ScrollView>
     </View>
   );
 }
