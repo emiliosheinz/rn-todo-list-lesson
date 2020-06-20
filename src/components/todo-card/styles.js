@@ -14,4 +14,8 @@ export default StyleSheet.create({
     marginHorizontal: 10,
     fontSize: 16,
   },
+  isDone: {
+    textDecorationLine: 'line-through',
+    color: '#D0D0D0',
+  },
 });
