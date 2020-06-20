@@ -36,7 +36,7 @@ export function ToDoCard(props) {
           {title}
         </Text>
 
-        <TouchableWithoutFeedback onPress={onDelete}>
+        <TouchableWithoutFeedback onPress={() => onDelete(id)}>
           <MyIcon name="trash-can" color="#C60000" />
         </TouchableWithoutFeedback>
       </View>
